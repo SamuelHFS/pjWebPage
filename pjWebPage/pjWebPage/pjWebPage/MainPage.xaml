@@ -6,11 +6,15 @@
              mc:Ignorable="d"
              x:Class="pjWebPage.MainPage">
 
+   
     <StackLayout>
-        <!-- Place new controls here -->
-        <Label Text="Welcome to Xamarin.Forms!" 
-           HorizontalOptions="Center"
-           VerticalOptions="CenterAndExpand" />
+        <Entry x:Name="urlTxt" Placeholder="Digite a URL" />
+        <Button Text="Pesquisar" Clicked="btUrl" />
+        <!-- Exibindo conteúdo HTML código escrito -->
+        <Button Text="Conteúdo HTML" Clicked="btHtml" />
+        <!-- Exibindo conteúdo arquivo HTML local -->
+        <Button Text="Conteúdo arquivo HTML" Clicked="btHtmlLocal" />
+        <WebView x:Name="wv1" VerticalOptions="FillAndExpand" />
     </StackLayout>
-
+    
 </ContentPage>

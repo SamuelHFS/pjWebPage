@@ -1,4 +1,5 @@
-﻿using System;
+﻿using pjWebPage.model;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -16,6 +17,36 @@ namespace pjWebPage
         public MainPage()
         {
             InitializeComponent();
+        }
+
+        private void btUrl(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(urlTxt.Text))
+                DisplayAlert("WebView Erro", "Digite a URL", "OK");
+            else
+                wv1.Source = urlTxt.Text;
+        }
+
+        private void btHtml(object sender, EventArgs e)
+        {
+            var html1 = new HtmlWebViewSource();
+            html1.Html = @"<!doctype html>
+                            <html><head><title>Exemplo 1</title>
+                            <meta charset='utf-8'
+                            </head>
+                            <body>
+                            <h2>Exemplo de conteúdo HTML em WebView</h2>
+                            <label style='color: Blue;'>Aula Xamarin - Prof. Ricardo Amaral</label>
+                            </body></html>";
+            wv1.Source = html1;
+        }
+
+        private void btHtmlLocal(object sender, EventArgs e)
+        {
+            var html2 = new HtmlWebViewSource();
+            html2.BaseUrl = DependencyService.Get<IBaseUrl>().Get();
+            wv1.Source = html2.BaseUrl;
+
         }
     }
 }
